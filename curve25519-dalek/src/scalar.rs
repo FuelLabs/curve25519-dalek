@@ -845,9 +845,9 @@ impl Scalar {
         (0..256).map(move |i| self.get_bit_le(i))
     }
 
+    /// Get the bits of the scalar, in little-endian order, as an array
     #[cfg(all(target_os = "zkvm", target_vendor = "succinct"))]
-    /// Get the bits of the scalar, in little-endian order, as a slice
-    pub(crate) fn bits_le_slice(&self) -> [bool; 256] {
+    pub(crate) fn bits_le_array(&self) -> [bool; 256] {
         let mut bits = [false; 256];
         for i in 0..256 {
             bits[i] = self.get_bit_le(i);
